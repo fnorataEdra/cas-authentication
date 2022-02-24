@@ -128,8 +128,10 @@ function CASAuthentication(options) {
                                     thisAttrValue.push(v._);
                                 });
                             }
-                            else {
-                                thisAttrValue = attr.attributevalue._;
+                            else if (typeof attr.attributevalue === 'string' || attr.attributevalue instanceof String){
+                              thisAttrValue = attr.attributevalue; // Nostro caso con ONEKEY
+                            } else {
+                              thisAttrValue = attr.attributevalue._;
                             }
                             attributes[ attr.$.AttributeName ] = thisAttrValue;
                         });
